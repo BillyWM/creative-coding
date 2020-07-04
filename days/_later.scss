@@ -1,0 +1,16 @@
+@use "/common.scss";
+
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.block {
+    @include common.circle(24px);
+    background-color: black;
+    background-blend-mode: exclusion;
+    display: inline-block;
+}

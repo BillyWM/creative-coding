@@ -1,0 +1,135 @@
+@use "/common.scss";
+@use "sass:math";
+@use "sass:color";
+@use "sass:list";
+@use "sass:meta";
+@use "sass:map";
+
+:root {
+    --regen: 12324441398
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: cornflowerblue;
+}
+
+.art {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    border: 1px dashed red;
+    background-color: darken(white, 1%);
+}
+
+.block {
+    position: absolute;
+    border: 3px solid;
+}
+
+@function random-by($max, $by) {
+    $base: math.floor($max / $by);
+    $rand: math.random($base);
+    @return $rand * $by;
+}
+
+@function random-one-of($args...) {
+    $len: list.length($args);
+    $rand: math.random($len);
+    
+    $pick: nth($args, $rand);
+    @debug($pick);
+    @return $pick;
+}
+
+// Return one or the other beteween two choices. Choices are lopsided by $weight
+@function random-weighted-either-or($max, $weight, $first, $second) {
+    $rand: math.random($max);
+    @if $rand < $weight {
+        @return $second;
+    } @else {
+        @return $first;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes grow-square-small {
+    0% {
+        height: 0
+    }
+    100% {
+        height: 50px;
+    }
+}
+
+@keyframes grow-square-big {
+    0% {
+        height: 0
+    }
+    100% {
+        height: 150px;
+    }
+}
+
+
+@mixin rando-circle() {
+    @include common.circle(50px);
+    animation: pulse 1s ease-in-out alternate infinite;
+}
+
+@mixin rando-square() {
+    $anim-name: (50px: grow-square-small, 150px: grow-square-big);
+    $size: random-weighted-either-or(10, 3, 50px, 150px);
+    @include common.square($size);
+    animation: map.get($anim-name, $size) 1s ease-in-out alternate infinite;
+}
+
+@mixin rando-shape() {
+    $shape: random-one-of(circle, square);
+
+    @if $shape == circle {
+        @include rando-circle();
+    } @else if $shape == square {
+        @include rando-square();
+    } @else {
+        @error("Don't know how to draw a " $shape);
+    }
+}
+
+// Can't do this apparently! - https://github.com/sass/sass/issues/626
+// @mixin rando-shape() {
+//     $shapefunc: rando-circle;
+//     $func: meta.get-function($shapefunc);
+
+//     $throwaway: meta.call($func);
+// }
+
+@for $i from 1 through 30 {
+    .block:nth-child(#{$i}) {
+        @include rando-shape();
+        $pos-from: random-one-of(top, bottom);
+
+        left: 50px + random-by(400, 65) * 1px;
+        #{$pos-from}: 50px + random-by(400, 25) * 1px;
+        display: #{random-weighted-either-or(40, 2, block, none)};
+        border-color: darken(random-one-of(hotpink, lightblue), 18%);
+        animation-delay: -3s * math.random();
+    }
+}
