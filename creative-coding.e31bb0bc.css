@@ -1,0 +1,399 @@
+:root {
+  --regen: 12324441398 ;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: cornflowerblue;
+}
+
+.art {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  border: 1px dashed red;
+  background-color: #fcfcfc;
+}
+
+.block {
+  position: absolute;
+  border: 3px solid;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes grow-square-small {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 50px;
+  }
+}
+@keyframes grow-square-big {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 150px;
+  }
+}
+.block:nth-child(1) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 115px;
+  top: 400px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -1.4725040083s;
+}
+
+.block:nth-child(2) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 375px;
+  top: 375px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -0.8117640296s;
+}
+
+.block:nth-child(3) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 375px;
+  bottom: 425px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -0.9221755276s;
+}
+
+.block:nth-child(4) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 245px;
+  bottom: 350px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -2.4876468585s;
+}
+
+.block:nth-child(5) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 310px;
+  bottom: 425px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -0.2448453902s;
+}
+
+.block:nth-child(6) {
+  width: 150px;
+  height: 150px;
+  animation: grow-square-big 1s ease-in-out alternate infinite;
+  left: 440px;
+  top: 75px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -0.6761415112s;
+}
+
+.block:nth-child(7) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 180px;
+  bottom: 100px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -1.8002205544s;
+}
+
+.block:nth-child(8) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 375px;
+  bottom: 125px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -2.59039456s;
+}
+
+.block:nth-child(9) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 440px;
+  bottom: 425px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -0.4353018612s;
+}
+
+.block:nth-child(10) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 115px;
+  top: 125px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -1.2641204338s;
+}
+
+.block:nth-child(11) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 375px;
+  top: 100px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -1.4551790778s;
+}
+
+.block:nth-child(12) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 245px;
+  bottom: 425px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -0.6008574538s;
+}
+
+.block:nth-child(13) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 245px;
+  top: 125px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -2.5390805909s;
+}
+
+.block:nth-child(14) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 180px;
+  top: 225px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -2.6451320696s;
+}
+
+.block:nth-child(15) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 310px;
+  bottom: 100px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -2.8239469286s;
+}
+
+.block:nth-child(16) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 310px;
+  top: 125px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -2.7239262629s;
+}
+
+.block:nth-child(17) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 440px;
+  top: 325px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -0.5444599735s;
+}
+
+.block:nth-child(18) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 310px;
+  top: 225px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -0.1661818214s;
+}
+
+.block:nth-child(19) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 440px;
+  top: 400px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -1.3670961726s;
+}
+
+.block:nth-child(20) {
+  width: 150px;
+  height: 150px;
+  animation: grow-square-big 1s ease-in-out alternate infinite;
+  left: 180px;
+  top: 400px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -2.489583738s;
+}
+
+.block:nth-child(21) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 245px;
+  bottom: 175px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -2.4772187875s;
+}
+
+.block:nth-child(22) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 375px;
+  top: 75px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -2.2407167127s;
+}
+
+.block:nth-child(23) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 115px;
+  top: 100px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -1.6973635972s;
+}
+
+.block:nth-child(24) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 115px;
+  top: 250px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -1.2843881997s;
+}
+
+.block:nth-child(25) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 375px;
+  bottom: 75px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -0.8737304089s;
+}
+
+.block:nth-child(26) {
+  width: 50px;
+  height: 50px;
+  animation: grow-square-small 1s ease-in-out alternate infinite;
+  left: 375px;
+  top: 100px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -1.0177716172s;
+}
+
+.block:nth-child(27) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 115px;
+  bottom: 100px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -1.9023177276s;
+}
+
+.block:nth-child(28) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 180px;
+  top: 400px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -1.3551779615s;
+}
+
+.block:nth-child(29) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 310px;
+  top: 425px;
+  display: block;
+  border-color: #67b7d1;
+  animation-delay: -2.503068746s;
+}
+
+.block:nth-child(30) {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out alternate infinite;
+  left: 310px;
+  bottom: 325px;
+  display: block;
+  border-color: #ff0d86;
+  animation-delay: -1.7560170881s;
+}
+
+/*# sourceMappingURL=/creative-coding.e31bb0bc.css.map */
