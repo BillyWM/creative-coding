@@ -47,7 +47,6 @@ body {
     $rand: math.random($len);
     
     $pick: nth($args, $rand);
-    @debug($pick);
     @return $pick;
 }
 
