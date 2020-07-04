@@ -17,13 +17,15 @@ let Blocks = (props) => {
     let blocks = [];
 
     for (let i of Array(props.numItems)) {
-        blocks.push(<div className="block"></div>);
+        blocks.push(<div className="block" key={i}></div>);
     }
 
     return <>{blocks}</>;
 }
 
 let Art20200704 = (props) => {
+
+    document.body.setAttribute("id", "day2");
 
     return (
         <div className="art">

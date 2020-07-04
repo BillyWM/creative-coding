@@ -7,16 +7,14 @@ let Picker = (props) => {
 
     return (
         <div>
-            <input list="days" type="date" onChange={props.dateChanged}></input>
+            <input list="days" type="date" onChange={props.dateChanged} defaultValue="2020-07-04"></input>
             <datalist id="days">
                 <option label="001: July 3">2020-07-03</option>
-                <option selected label="002: July 4">2020-07-04</option>
+                <option label="002: July 4">2020-07-04</option>
             </datalist>
         </div>
     )
 }
-
-
 
 class Main extends React.Component {
 
@@ -45,8 +43,6 @@ class Main extends React.Component {
 
     dateChanged(e) {
         let selected = e.target.value;
-
-        console.log(selected);
 
         this.setState({
             picked: selected

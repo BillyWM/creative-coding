@@ -5,22 +5,77 @@
 @use "sass:meta";
 @use "sass:map";
 
+@mixin wedge($size, $color, $pct) {
+    @if not list.index((0% 25% 50% 75% 100%), $pct) {
+        @error "Invalid percentage value " $pct;
+    }
+
+    width: $size;
+    height: $size;
+
+    border-radius: 50%;
+
+    @if math.random(2) == 1 {
+        background: conic-gradient($color $pct, transparent 0 (100% - $pct));
+    } @else {
+        background: conic-gradient(transparent 0 $pct, $color 0 (100% - $pct));
+    }
+
+}
+
+body#day2 {
+    .art {
+        display: grid;
+        // grid-template-rows: repeat(10, 1fr);
+        grid-template-columns: repeat(10, 1fr);
+        align-items: center;
+        justify-items: center;
+
+        background-color: black;
+    }
+    
+    .block {
+        // position: absolute;
+        // border: 3px solid;
+    }
+}
+
+
 :root {
-    --regen: 12324441398
-}
-
-.art {
-    display: grid;
-    grid-template-rows: repeat(10, 1fr);
-    grid-template-columns: repeat(10, 1fr);
-}
-
-.block {
-    position: absolute;
-    border: 3px solid;
+    --regen: aksdjf;
 }
 
 @for $i from 1 through 100 {
-    .block:nth-child(#{$i}) {
+    body#day2 .block:nth-child(#{$i}) {
+
+        $size: 48px;
+
+        $dot-or-wedge: common.random-weighted-either-or(50, 8, wedge, dot);
+        $pct: common.random-one-of(25%, 50%, 75%);
+        $spin: common.random-one-of(0deg, 90deg, 180deg, 270deg);
+        $col: common.random-one-of(cyan, white, blue);
+
+        @if $dot-or-wedge == wedge {
+            @include wedge(48px, $col, $pct);
+            // transform: rotate($spin);
+        } @else {
+            @include common.circle($size/3);
+            background-color: $col;
+        }
+
+        transition: none;
+        transform-origin: center center;
+        animation: wedge-clock-spin (math.random(3) * 1.5s) steps(4) infinite;
+        animation-delay: -1 * math.random(5);
+
+    }
+}
+
+@keyframes wedge-clock-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
