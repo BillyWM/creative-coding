@@ -1,0 +1,26 @@
+@use "/common.scss";
+@use "sass:math";
+@use "sass:color";
+@use "sass:list";
+@use "sass:meta";
+@use "sass:map";
+
+:root {
+    --regen: 12324441398
+}
+
+.art {
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+}
+
+.block {
+    position: absolute;
+    border: 3px solid;
+}
+
+@for $i from 1 through 100 {
+    .block:nth-child(#{$i}) {
+    }
+}

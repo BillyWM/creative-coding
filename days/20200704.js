@@ -1,5 +1,5 @@
 import React from "react";
-import "./20200703.scss";
+import "./20200704.scss";
 
 // props.repeats
 let Repeat = (props) => {
@@ -23,13 +23,13 @@ let Blocks = (props) => {
     return <>{blocks}</>;
 }
 
-let Art20200703 = (props) => {
+let Art20200704 = (props) => {
 
     return (
         <div className="art">
-            <Blocks numItems={30} />
+            <Blocks numItems={100} />
         </div>
     )
 }
 
-export default Art20200703;
+export default Art20200704;
