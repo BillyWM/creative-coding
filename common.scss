@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "sass:math";
+
 @mixin square($size) {
     width: $size;
     height: $size;
@@ -6,4 +9,52 @@
 @mixin circle($size) {
     @include square($size);
     border-radius: 50%;
+}
+
+
+@function random-by($max, $by) {
+    $base: math.floor($max / $by);
+    $rand: math.random($base);
+    @return $rand * $by;
+}
+
+@function random-one-of($args...) {
+    $len: list.length($args);
+    $rand: math.random($len);
+    
+    $pick: nth($args, $rand);
+    @return $pick;
+}
+
+// Return one or the other beteween two choices. Choices are lopsided by $weight
+@function random-weighted-either-or($max, $weight, $first, $second) {
+    $rand: math.random($max);
+    @if $rand < $weight {
+        @return $second;
+    } @else {
+        @return $first;
+    }
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: cornflowerblue;
+}
+
+.art {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    border: 1px dashed red;
+    background-color: darken(white, 1%);
 }

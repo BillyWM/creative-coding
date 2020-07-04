@@ -1,29 +1,21 @@
 import React from "react";
 import "./20200703.scss";
 
-// props.repeats
-let Repeat = (props) => {
-    let els = [];
-    for (let i of Array(props.repeats)) {
-        els.push(props.children);
-    }
-
-    return <>{els}</>
-}
-
 // props.numItems
 let Blocks = (props) => {
 
     let blocks = [];
 
     for (let i of Array(props.numItems)) {
-        blocks.push(<div className="block"></div>);
+        blocks.push(<div className="block" key={i}></div>);
     }
 
     return <>{blocks}</>;
 }
 
-let Art = (props) => {
+let Art20200703 = (props) => {
+
+    document.body.setAttribute("id", "day1");
 
     return (
         <div className="art">
@@ -32,4 +24,4 @@ let Art = (props) => {
     )
 }
 
-export default Art;
+export default Art20200703;
