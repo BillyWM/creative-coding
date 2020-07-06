@@ -1,0 +1,57 @@
+@use "/common.scss";
+@use "/sass-common/LCG.scss";
+@use "sass:math";
+@use "sass:color";
+@use "sass:list";
+@use "sass:meta";
+@use "sass:map";
+
+// @for $i from 1 through 50 {
+//     @debug LCG.range(5, 12);
+// }
+
+@for $i from 1 through 10 {
+    @debug LCG.one-of(25% 50% 75% 100%);
+}
+
+body#day3 {
+
+    .overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: black;
+        background-image: radial-gradient(transparent 15%, lighten(goldenrod, 10%) 35%, transparent 36%);
+        background-size: 120px 120px;
+    }
+
+    .block-layer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: red;
+    }
+
+    .art {
+        display: grid;
+        // grid-template-rows: repeat(10, 1fr);
+        grid-template-columns: repeat(10, 1fr);
+        align-items: center;
+        justify-items: center;
+
+        background-color: white;
+    }
+    
+    .block {
+        // position: absolute;
+        // border: 3px solid;
+    }
+}
+
+@for $i from 1 through 100 {
+    body#day3 .block:nth-child(#{$i}) {
+
+
+
+    }
+}

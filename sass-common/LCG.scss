@@ -1,0 +1,49 @@
+@use "sass:math";
+@use "sass:list";
+@use "sass:meta";
+
+$lcg_next: 42;
+@function LCG($seed: null) {
+
+    @if $seed != null {
+        $seed: $seed % 2147483647;
+        @if ($seed <= 0) {
+            $seed: $seed + 2147483646;
+        }    
+    } @else {
+        $seed: $lcg_next;
+    }
+
+    $lcg_next: $seed * 16807 % 2147483647 !global;
+    @return $lcg_next;
+}
+
+@function one-of($args...) {
+    $flat: -flatten-arglist($args);
+    $len: list.length($flat);
+    $i: range(1, $len);
+
+    @return nth($flat, $i);
+}
+
+@function range($min, $max) {
+    $float: float();
+    $int: math.floor($float * ($max - $min + 1)) + $min;
+    @return $int;
+}
+
+@function float() {
+    $int: LCG();
+    @return $int / 2147483647;
+}
+
+// -------- private ---------
+
+@function -flatten-arglist($arglist) {
+    $flat: ();
+    @each $item in $arglist {
+        $flat: list.join($flat, $item)
+    }
+
+    @return $flat;
+}
