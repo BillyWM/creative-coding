@@ -9,7 +9,15 @@ body#day1 {
     .block {
         position: absolute;
         border: 3px solid;
-    }    
+    }
+
+    .art {
+        width: 600px;
+        height: 600px;
+        position: relative;
+        border: 1px dashed red;
+        background-color: darken(white, 1%);
+    }
 }
 
 
