@@ -8,15 +8,34 @@
 
 // Inspiration: https://www.instagram.com/p/BIqRRkqAqyh/
 
-@mixin curved-line($height) {
+@mixin curved-line($height, $color: none) {
+    
+    $cap-size: 3px;
     $curviness: 25%;
 
     height: $height;
     width: $height * 4;
-    border-top-right-radius: $curviness;
-    border-bottom-right-radius: $curviness;
-    border-top-left-radius: $curviness;
-    border-bottom-left-radius: $curviness;
+
+    &::before, &::after {
+        content: " ";
+        display: block;
+        position: absolute;
+        width: $cap-size;
+        height: $height;
+        background-color: $color;
+    }
+
+    &::before {
+        left: -1 * $cap-size;
+        border-top-left-radius: $curviness;
+        border-bottom-left-radius: $curviness;
+    }
+
+    &::after {
+        right: -1 * $cap-size;
+        border-top-right-radius: $curviness;
+        border-bottom-right-radius: $curviness;
+    }
 }
 
 // (10 columns)
@@ -59,11 +78,35 @@ body#day4 {
         @include quick-grid(4 columns of 20);
     }
 
-    .block {
-        @include curved-line(10px);
-        background-color: color.change(green, $lightness:75%, $saturation:65.5%);
-        box-shadow: 2px 4px color.change(blue, $lightness:75%, $saturation:65.5%);
+   .block {
+        $block-color: color.change(green, $lightness:75%, $saturation:65.5%);
+        $block-shadow: 2px 4px color.change(blue, $lightness:75%, $saturation:65.5%);
+
+        @include curved-line(10px, $block-color);
+        background-color: $block-color;
+        box-shadow: $block-shadow;
     }
+
+    // .block::before, .block::after {
+    //     content: " ";
+    //     display: block;
+    //     position: absolute;
+    //     width: $cap-size;
+    //     height: 10px;
+    //     background-color: $block-color;
+    // }
+    
+    // .block::after {
+    //     right: -1 * $cap-size;
+    //     border-top-right-radius: 25%;
+    //     border-bottom-right-radius: 25%;
+    // }
+
+    // .block::before {
+    //     left: -1 * $cap-size;
+    //     border-top-left-radius: 25%;
+    //     border-bottom-left-radius: 25%;
+    // }
 }
 
 @for $i from 1 through 80 {
