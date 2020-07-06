@@ -1,0 +1,105 @@
+@use "/common.scss";
+@use "/sass-common/LCG.scss";
+@use "sass:math";
+@use "sass:color";
+@use "sass:list";
+@use "sass:meta";
+@use "sass:map";
+
+// Inspiration: https://www.instagram.com/p/BIqRRkqAqyh/
+
+@mixin curved-line($height) {
+    $curviness: 25%;
+
+    height: $height;
+    width: $height * 4;
+    border-top-right-radius: $curviness;
+    border-bottom-right-radius: $curviness;
+    border-top-left-radius: $curviness;
+    border-bottom-left-radius: $curviness;
+}
+
+// (10 columns)
+@mixin quick-grid($args) {
+
+    display: grid;
+
+    $rows-or-columns: list.nth($args, 2);
+    $how-many: list.nth($args, 1);
+    $of-many: list.nth($args, 4);
+
+    @if $rows-or-columns == columns {
+        grid-template-columns: repeat($how-many, 1fr);
+        grid-template-rows: repeat($of-many, 1fr);
+    } else {
+        grid-template-rows: repeat($how-many, 1fr);
+        grid-template-columns: repeat($of-many, 1fr);
+    }
+}
+
+body#day3 {
+
+    .art {
+        display: grid;
+        align-content: center;
+        justify-content: center;
+        width: 600px;
+        height: 600px;
+
+        background-color: salmon;
+    }
+
+    .block-layer {
+        width: 500px;
+        height: 15px * 20 + 150px;
+
+        align-items: center;
+        justify-items: center;
+
+        @include quick-grid(4 columns of 20);
+    }
+
+    .block {
+        @include curved-line(10px);
+        background-color: color.change(green, $lightness:75%, $saturation:65.5%);
+        box-shadow: 2px 4px color.change(blue, $lightness:75%, $saturation:65.5%);
+    }
+}
+
+@for $i from 1 through 80 {
+    $start-offset: -16s;
+
+    body#day3 .block:nth-child(#{$i}) {
+        $start-offset: ($start-offset + (0.1s * $i));
+        animation: drift-scale 4s alternate-reverse infinite;
+        animation-delay: $start-offset;
+    }
+
+    // body#day3 .block:nth-child(7n) {
+    //     animation: scale-x 3s alternate-reverse infinite;
+    //     background-color: green;
+    // }
+}
+
+body#day3 .block:nth-child(4n),
+body#day3 .block:nth-child(2n) {
+    animation-direction: alternate;
+}
+
+@keyframes drift-scale {
+    from {
+        transform: scaleX(-2.4) scaleY(0.6) translateY(-200%);
+    }
+    to {
+        transform: scaleX(2.4)  scaleY(1.2) translateY(200%);
+    }
+}
+
+@keyframes scale-x {
+    from {
+        transform: scaleX(-2.4);
+    }
+    to {
+        transform: scaleX(2.4);
+    }
+}
