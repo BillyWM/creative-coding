@@ -6,52 +6,86 @@
 @use "sass:meta";
 @use "sass:map";
 
-// @for $i from 1 through 50 {
-//     @debug LCG.range(5, 12);
-// }
+// Inspiration: https://www.instagram.com/p/BIqRRkqAqyh/
 
-@for $i from 1 through 10 {
-    @debug LCG.one-of(25% 50% 75% 100%);
+@mixin curved-line($height) {
+    $curviness: 25%;
+
+    height: $height;
+    width: $height * 4;
+    border-top-right-radius: $curviness;
+    border-bottom-right-radius: $curviness;
+    border-top-left-radius: $curviness;
+    border-bottom-left-radius: $curviness;
+}
+
+// (10 columns)
+@mixin quick-grid($args) {
+
+    display: grid;
+
+    $rows-or-columns: list.nth($args, 2);
+    $how-many: list.nth($args, 1);
+    $of-many: list.nth($args, 4);
+
+    @if $rows-or-columns == columns {
+        grid-template-columns: repeat($how-many, 1fr);
+        grid-template-rows: repeat($of-many, 1fr);
+    } else {
+        grid-template-rows: repeat($how-many, 1fr);
+        grid-template-columns: repeat($of-many, 1fr);
+    }
 }
 
 body#day3 {
 
-    .overlay {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-color: black;
-        background-image: radial-gradient(transparent 15%, lighten(goldenrod, 10%) 35%, transparent 36%);
-        background-size: 120px 120px;
+    .art {
+        display: grid;
+        align-content: center;
+        justify-content: center;
+        width: 600px;
+        height: 600px;
+
+        background-color: salmon;
     }
 
     .block-layer {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-color: red;
-    }
+        width: 500px;
+        height: 15px * 20 + 150px;
 
-    .art {
-        display: grid;
-        // grid-template-rows: repeat(10, 1fr);
-        grid-template-columns: repeat(10, 1fr);
         align-items: center;
         justify-items: center;
 
-        background-color: white;
+        @include quick-grid(4 columns of 20);
     }
-    
+
     .block {
-        // position: absolute;
-        // border: 3px solid;
+        @include curved-line(10px);
+        background-color: darkblue;
+        box-shadow: 2px 4px white;
     }
 }
 
-@for $i from 1 through 100 {
+@for $i from 1 through 80 {
+    $start-offset: -12s;
+
     body#day3 .block:nth-child(#{$i}) {
+        $start-offset: $start-offset + (0.1s * $i);
+        animation: scale-x 4s alternate-reverse infinite;
+        animation-delay: $start-offset;
+    }
 
+    // body#day3 .block:nth-child(7n) {
+    //     animation: scale-x 3s alternate-reverse infinite;
+    //     background-color: green;
+    // }
+}
 
-
+@keyframes scale-x {
+    from {
+        transform: scaleX(-2.4);
+    }
+    to {
+        transform: scaleX(2.4);
     }
 }

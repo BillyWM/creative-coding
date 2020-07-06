@@ -30,7 +30,7 @@ let Art20200705 = (props) => {
     return (
         <div className="art">
             <div className="block-layer">
-                {/* <Blocks numItems={100} /> */}
+                <Blocks numItems={80} />
             </div>
             <div className="overlay"></div>
         </div>
