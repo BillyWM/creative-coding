@@ -1,0 +1,3 @@
+[submodule "shape-shifter"]
+	path = shape-shifter
+	url = https://github.com/BillyWM/shape-shifter.git
