@@ -1,12 +1,16 @@
 {
   "dependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "submodules-install": "^1.0.1"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
     "sass": "^1.26.9"
   },
+  "submodules": [
+    "shape-shifter/*"
+  ],
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
