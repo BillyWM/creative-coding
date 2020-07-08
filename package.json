@@ -5,6 +5,7 @@
     "submodules-install": "^1.0.1"
   },
   "devDependencies": {
+    "jest": "^26.1.0",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.26.9"
   },
@@ -13,6 +14,7 @@
   ],
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "build-parser": "pegjs -o ./shape-shifter.js ./shape-shifter/shape-shifter.pegjs"
   }
 }
